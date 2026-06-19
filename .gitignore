@@ -5,3 +5,4 @@ Sentinel Resources/.DS_Store
 *.xcuserstate
 Builds/
 .claude
+/dist
