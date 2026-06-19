@@ -7,11 +7,6 @@
    <br />
    <strong>Version: </strong>3.1.4
    <br />
-   <a href="https://github.com/alienator88/Sentinel/releases"><strong>Download</strong></a>
-    · 
-   <a href="https://github.com/alienator88/Sentinel/commits">Commits</a>
-   <br />
-   <br />
 </p>
 </br>
 
