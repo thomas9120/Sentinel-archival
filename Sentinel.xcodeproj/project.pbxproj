@@ -18,6 +18,14 @@
 		C744585F2E382B9500B8D6F1 /* FinderOpen.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C74458572E382B9500B8D6F1 /* FinderOpen.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C74458672E3830E300B8D6F1 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74458662E3830E000B8D6F1 /* Utilities.swift */; };
 		C744586F2E38356400B8D6F1 /* DeepLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744586E2E38356200B8D6F1 /* DeepLink.swift */; };
+		C7F000202F00000000000001 /* SentinelCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F000112F00000000000001 /* SentinelCore.swift */; };
+		C7F000202F00000000000002 /* SentinelCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F000112F00000000000001 /* SentinelCore.swift */; };
+		C7F000202F00000000000003 /* SentinelCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F000112F00000000000001 /* SentinelCore.swift */; };
+		C7F000202F00000000000004 /* DeepLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F000132F00000000000001 /* DeepLinkTests.swift */; };
+		C7F000202F00000000000005 /* CommandPlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F000132F00000000000002 /* CommandPlanTests.swift */; };
+		C7F000202F00000000000006 /* ExternalToolParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F000132F00000000000003 /* ExternalToolParsingTests.swift */; };
+		C7F000202F00000000000007 /* NotarizationFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F000132F00000000000004 /* NotarizationFlowTests.swift */; };
+		C7F000202F00000000000008 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F000142F00000000000001 /* XCTest.framework */; };
 		C78AAAB32BB33F84002AD918 /* UpdateSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78AAAB22BB33F84002AD918 /* UpdateSettingsView.swift */; };
 		C78AAAB52BB33F9A002AD918 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78AAAB42BB33F9A002AD918 /* Styles.swift */; };
 		C78AAAB92BB3418E002AD918 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78AAAB82BB3418E002AD918 /* SettingsWindow.swift */; };
@@ -70,6 +78,13 @@
 		C744586E2E38356200B8D6F1 /* DeepLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLink.swift; sourceTree = "<group>"; };
 		C74458722E383D4B00B8D6F1 /* announcements.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = announcements.json; sourceTree = SOURCE_ROOT; };
 		C766D28B2C34D10500F51BB9 /* Builds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Builds; sourceTree = SOURCE_ROOT; };
+		C7F000102F00000000000001 /* SentinelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SentinelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7F000112F00000000000001 /* SentinelCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentinelCore.swift; sourceTree = "<group>"; };
+		C7F000132F00000000000001 /* DeepLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkTests.swift; sourceTree = "<group>"; };
+		C7F000132F00000000000002 /* CommandPlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandPlanTests.swift; sourceTree = "<group>"; };
+		C7F000132F00000000000003 /* ExternalToolParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalToolParsingTests.swift; sourceTree = "<group>"; };
+		C7F000132F00000000000004 /* NotarizationFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotarizationFlowTests.swift; sourceTree = "<group>"; };
+		C7F000142F00000000000001 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = System/Library/Frameworks/XCTest.framework; sourceTree = SDKROOT; };
 		C78AAAB22BB33F84002AD918 /* UpdateSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSettingsView.swift; sourceTree = "<group>"; };
 		C78AAAB42BB33F9A002AD918 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		C78AAAB82BB3418E002AD918 /* SettingsWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindow.swift; sourceTree = "<group>"; };
@@ -117,6 +132,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7F000302F00000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7F000202F00000000000008 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -126,6 +149,8 @@
 				C7BEBE1A2E84693400B56DE9 /* Shared */,
 				4180AEAC2839753E0054FEA9 /* Sentinel */,
 				C74458582E382B9500B8D6F1 /* FinderOpen */,
+				C7F000122F00000000000001 /* SentinelTests */,
+				C7F000152F00000000000001 /* Frameworks */,
 				4180AEAB2839753E0054FEA9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,6 +160,7 @@
 			children = (
 				4180AEAA2839753E0054FEA9 /* Sentinel.app */,
 				C74458572E382B9500B8D6F1 /* FinderOpen.appex */,
+				C7F000102F00000000000001 /* SentinelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				C744586E2E38356200B8D6F1 /* DeepLink.swift */,
+				C7F000112F00000000000001 /* SentinelCore.swift */,
 				C74458662E3830E000B8D6F1 /* Utilities.swift */,
 				C708899B2DB42F8200AC3E2B /* DropDelegates.swift */,
 				C716BB2C2DB2E251004A78E8 /* Gatekeeper.swift */,
@@ -181,6 +208,25 @@
 				C78AAAB82BB3418E002AD918 /* SettingsWindow.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		C7F000122F00000000000001 /* SentinelTests */ = {
+			isa = PBXGroup;
+			children = (
+				C7F000132F00000000000001 /* DeepLinkTests.swift */,
+				C7F000132F00000000000002 /* CommandPlanTests.swift */,
+				C7F000132F00000000000003 /* ExternalToolParsingTests.swift */,
+				C7F000132F00000000000004 /* NotarizationFlowTests.swift */,
+			);
+			path = SentinelTests;
+			sourceTree = "<group>";
+		};
+		C7F000152F00000000000001 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7F000142F00000000000001 /* XCTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +277,25 @@
 			productReference = C74458572E382B9500B8D6F1 /* FinderOpen.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		C7F000402F00000000000001 /* SentinelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7F000502F00000000000001 /* Build configuration list for PBXNativeTarget "SentinelTests" */;
+			buildPhases = (
+				C7F000302F00000000000001 /* Sources */,
+				C7F000302F00000000000002 /* Frameworks */,
+				C7F000302F00000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SentinelTests;
+			packageProductDependencies = (
+			);
+			productName = SentinelTests;
+			productReference = C7F000102F00000000000001 /* SentinelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -246,6 +311,10 @@
 					};
 					C74458562E382B9500B8D6F1 = {
 						CreatedOnToolsVersion = 16.4;
+					};
+					C7F000402F00000000000001 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 4180AEA92839753E0054FEA9;
 					};
 				};
 			};
@@ -266,6 +335,7 @@
 			targets = (
 				4180AEA92839753E0054FEA9 /* Sentinel */,
 				C74458562E382B9500B8D6F1 /* FinderOpen */,
+				C7F000402F00000000000001 /* SentinelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -285,6 +355,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7BEBE1F2E846A8B00B56DE9 /* Sentinel.icon in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7F000302F00000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +385,7 @@
 				C733F76B29CA59AE00DADADD /* Script.swift in Sources */,
 				C7BB802A29CA28B400006CDB /* Dashboard.swift in Sources */,
 				C744586F2E38356400B8D6F1 /* DeepLink.swift in Sources */,
+				C7F000202F00000000000001 /* SentinelCore.swift in Sources */,
 				4180AEAE2839753E0054FEA9 /* SentinelApp.swift in Sources */,
 				C78AAAB92BB3418E002AD918 /* SettingsWindow.swift in Sources */,
 			);
@@ -317,6 +395,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F000202F00000000000002 /* SentinelCore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7F000302F00000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7F000202F00000000000003 /* SentinelCore.swift in Sources */,
+				C7F000202F00000000000004 /* DeepLinkTests.swift in Sources */,
+				C7F000202F00000000000005 /* CommandPlanTests.swift in Sources */,
+				C7F000202F00000000000006 /* ExternalToolParsingTests.swift in Sources */,
+				C7F000202F00000000000007 /* NotarizationFlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +700,50 @@
 			};
 			name = Release;
 		};
+		C7F000512F00000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SentinelTests;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alienator88.SentinelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
+		C7F000512F00000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_TESTING_SEARCH_PATHS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SentinelTests;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alienator88.SentinelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -635,6 +770,15 @@
 			buildConfigurations = (
 				C74458622E382B9500B8D6F1 /* Debug */,
 				C74458632E382B9500B8D6F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7F000502F00000000000001 /* Build configuration list for PBXNativeTarget "SentinelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7F000512F00000000000001 /* Debug */,
+				C7F000512F00000000000002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

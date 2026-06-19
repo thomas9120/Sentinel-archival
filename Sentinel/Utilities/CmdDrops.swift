@@ -17,12 +17,11 @@ func CmdRunDrop(cmd: String, path: String, type: cmdType, sudo: Bool = false, ap
     @AppStorage("sentinel.general.autoLaunch") var autoLaunch = true
     @AppStorage("sentinel.general.notaryProfile") var notaryProfile = ""
 
-    let fullCMD: String
-    if type == .signDev {
-        fullCMD = "xattr -cr '\(path)' && \(cmd) '\(path)'"
-    } else {
-        fullCMD = "\(cmd) '\(path)'"
-    }
+    let fullCMD = makeDropCommand(
+        commandPrefix: cmd,
+        path: path,
+        clearsExistingAttributes: type == .signDev
+    )
 
     Task {
         do {
@@ -138,86 +137,37 @@ func CmdRunDrop(cmd: String, path: String, type: cmdType, sudo: Bool = false, ap
 
 
 func checkQuarantineRemoved(path: String) async -> Bool {
-    let out = runShCommand("xattr -p com.apple.quarantine '\(path)'")
+    let out = runShCommand("xattr -p com.apple.quarantine \(shellQuoted(path))")
     return out.standardOutput.isEmpty
 }
 
 func checkAppSigned(path: String) async -> Bool {
-    let out = runShCommand("codesign -v '\(path)'")
+    let out = runShCommand("codesign -v \(shellQuoted(path))")
     return out.standardError.isEmpty
 }
 
 
 func notarizeApp(path: String, profile: String, appState: AppState) {
     let appSupport = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
-    let zipDir = appSupport.appendingPathComponent(Bundle.main.name)
-    let zipPath = zipDir.appendingPathComponent((path as NSString).lastPathComponent + ".zip").path
-
-    // Step 1: Zip the app
-    let zipCmd = "ditto -c -k --keepParent '\(path)' '\(zipPath)'"
-    let zipResult = runShCommand(zipCmd)
-    printOS(zipResult.standardOutput)
-    printOS(zipResult.standardError)
-    if !zipResult.standardError.isEmpty {
-        updateOnMain {
-            appState.status = "Notarization zipping failed, check Debug console for more info (CMD+D)"
-        }
-    }
-
-    // Step 2: Submit to notarytool
-    let notaryCmd = "xcrun notarytool submit '\(zipPath)' --keychain-profile \"\(profile)\" --wait"
-    let notaryResult = runShCommand(notaryCmd)
-    printOS(notaryResult.standardOutput)
-    printOS(notaryResult.standardError)
-    if !notaryResult.standardError.isEmpty {
-        updateOnMain {
-            appState.status = "Notarization failed, check Debug console for more info (CMD+D)"
-        }
-        do {
-            if FileManager.default.fileExists(atPath: zipPath) {
-                try FileManager.default.removeItem(atPath: zipPath)
+    _ = runNotarization(
+        path: path,
+        profile: profile,
+        appSupportDirectory: appSupport,
+        bundleName: Bundle.main.name,
+        runCommand: { command in
+            let output = runShCommand(command)
+            return SentinelCommandOutput(
+                standardOutput: output.standardOutput,
+                standardError: output.standardError
+            )
+        },
+        fileExists: { FileManager.default.fileExists(atPath: $0) },
+        removeFile: { try FileManager.default.removeItem(atPath: $0) },
+        setStatus: { status in
+            updateOnMain {
+                appState.status = status
             }
-        } catch {
-            printOS("Failed to remove zip file at path \(zipPath): \(error)")
-        }
-        return
-    }
-    if notaryResult.standardOutput.contains("status: Invalid") {
-        updateOnMain {
-            printOS("Make sure you did not sign using an Apple Development certificate as those are only for local testing and cannot notarize an application.")
-            appState.status = "Notarization failed, check Debug console for more info (CMD+D)"
-        }
-        do {
-            if FileManager.default.fileExists(atPath: zipPath) {
-                try FileManager.default.removeItem(atPath: zipPath)
-            }
-        } catch {
-            printOS("Failed to remove zip file at path \(zipPath): \(error)")
-        }
-        return
-    }
-
-    // Step 3: Staple the ticket
-    let stapleCmd = "xcrun stapler staple '\(path)'"
-    let stapleResult = runShCommand(stapleCmd)
-    printOS(stapleResult.standardOutput)
-    printOS(stapleResult.standardError)
-    if !stapleResult.standardError.isEmpty {
-        updateOnMain {
-            appState.status = "Notarization staple failed, check Debug console for more info (CMD+D)"
-        }
-    }
-
-    // Step 4: Remove zip
-    do {
-        if FileManager.default.fileExists(atPath: zipPath) {
-            try FileManager.default.removeItem(atPath: zipPath)
-        }
-    } catch {
-        printOS("Failed to remove zip file at path \(zipPath): \(error)")
-    }
-
-    updateOnMain {
-        appState.status = "App has been signed and notarized successfully"
-    }
+        },
+        log: { printOS($0) }
+    )
 }

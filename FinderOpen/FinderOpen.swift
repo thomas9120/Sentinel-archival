@@ -127,7 +127,10 @@ class FinderOpen: FIFinderSync {
         // Consider only the first selected item
         let firstSelectedItem = selectedItems[0]
         let path = firstSelectedItem.path
-        NSWorkspace.shared.open(URL(string: "sentinel://com.alienator88.Sentinel?path=\(path)")!)
+        guard let url = makeSentinelURL(forAppPath: path) else {
+            return
+        }
+        NSWorkspace.shared.open(url)
     }
 
 }

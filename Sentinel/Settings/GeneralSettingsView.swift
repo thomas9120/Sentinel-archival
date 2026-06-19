@@ -209,17 +209,7 @@ func loadIdentities() -> [String] {
 
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
     if let output = String(data: data, encoding: .utf8) {
-        let lines = output.split(separator: "\n")
-        let ids = lines.compactMap { line -> String? in
-            let parts = line.split(separator: "\"")
-            guard parts.count >= 2 else { return nil }
-            let identity = String(parts[1])
-            if !showDevCerts && identity.starts(with: "Apple Development") {
-                return nil
-            }
-            return identity
-        }
-        return ["None"] + ids
+        return parseCodeSigningIdentities(output: output, includeDevelopment: showDevCerts)
     }
     return ["None"]
 }
