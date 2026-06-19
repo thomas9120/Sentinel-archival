@@ -91,9 +91,7 @@ func updateGatekeeperUI(appState: AppState) {
 
 func getGatekeeperStatus() async -> Bool {
     let out = runShCommand("spctl --status")
-    let disabled = out.standardError.lowercased().contains("disabled")
-    let enabled = out.standardOutput.lowercased().contains("enabled")
-    return enabled && !disabled
+    return parseGatekeeperStatus(stdout: out.standardOutput, stderr: out.standardError)
 }
 
 func setGatekeeperState(enabled: Bool, appState: AppState) {

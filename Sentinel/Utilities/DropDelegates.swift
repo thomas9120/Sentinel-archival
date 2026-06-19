@@ -88,9 +88,7 @@ struct DropSign: DropDelegate {
                 }
                 Task {
                     let identity = UserDefaults.standard.string(forKey: "sentinel.general.codesignIdentity") ?? "None"
-                    let signCmd = identity == "None"
-                    ? "codesign -f -s - --deep"
-                    : "codesign -f -s '\(identity)' --deep --options runtime"
+                    let signCmd = codeSignCommandPrefix(identity: identity)
 
                     if identity != "None" {
                         _ = await CmdRunDrop(cmd: signCmd, path: url.path, type: .signDev, sudo: true, appState: appState)
